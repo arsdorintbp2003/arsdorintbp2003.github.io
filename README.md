@@ -1,10 +1,9 @@
-# arsodrintbp2003.github.io
-Hello World! 👋  I am Bui Phuong Nam!
+### Hello World! 👋  I am Bui Phuong Nam!
 
-About:
+### About:
   
-  2nd Year Students In National University of Singapore
+  - 2nd Year Students In National University of Singapore
     
-    Major: Computer Engineering
+    + Major: Computer Engineering
     
-    Minor: Data Analytic 
+    + Minor: Data Analytic 
