@@ -96,8 +96,8 @@ html {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-animation: hue 10s infinite linear;
-    animation: hue 10s infinite linear;
+    /*-webkit-animation: hue 10s infinite linear;
+    animation: hue 10s infinite linear;*/
 }
 
 .hue-bold {
