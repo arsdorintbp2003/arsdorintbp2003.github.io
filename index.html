@@ -40,15 +40,17 @@
                         or via <a href="https://web.telegram.org/k/#@bpn09">Telegram</a> or
                             <a href="https://discord.com/channels/763950396812296222/763950396812296224">Discord</a>
                             if you need for instant contact or just want to make friends.</p>
-                    <!--</motion.p>-->
                     <motion.div className="flex flex-row gap-3" variants={animate}>
-                        <button class="btn btn-success" onclick=" window.open('/cv','_blank')">
+                        <button class="btn btn-light" onclick=" window.open('/cv','_blank')">
                             View my résume
                         </Button>
-                        <Button className="btn btn-success" href="mailto:me@arsdorint.is-a.dev">
+                        <Button class="btn btn-light" onclick="window.open('mailto:me@arsdorint.is-a.dev', '_blank')">
+                            <i class="fa-sharp fa-solid fa-envelope"></i>
                             <Mail size={84} width={84} strokeWidth={5} />
                         </Button>
-                        <Button href="https://github.com/arsdorintbp2003" className="btn-nopadding p-1.5">
+                        <Button class="btn btn-light"
+                                onclick="window.open('https://github.com/arsdorintbp2003', '_blank')" >
+                            <i class="fa-brands fa-github"></i>
                             <Github size={24} width={24} strokeWidth={1} />
                         </Button>
                     </motion.div>
@@ -56,7 +58,8 @@
             </div>
         </div>
         
-        
+        <br>
+        <br>
             
         <h1 class="gradiant-effect" id="second-heading">Programming Skills</h1>
         <br>
@@ -64,12 +67,11 @@
           <h2 class="class-title"><a> Experienced: </a></h2>
           <br>
             <i class="fab fa-python skills-icon" data-tippy-content="Python"></i>
-          
             <i class="fab fa-java skills-icon" data-tippy-content="Java"></i>
             <i class="fab fa-cuttlefish skills-icon" data-tippy-content="C"></i>
             <i class="fab fa-cuttlefish skills-icon" data-tippy-content="C++">+</i>
             <i class="fab fa-git-alt skills-icon" data-tippy-content="Git"></i>
-            <!--<i class="fa-solid fa-terminal skills-icon" data-tippy-content="Batch"></i>-->
+
         <br>
         </div>
         <br><br>
@@ -77,8 +79,10 @@
             <h2 class="class-title"><a> Have Used: </a></h2>
             <i class="fab fa-js-square skills-icon" data-tippy-content="Java Script"></i>
             <i class="fab fa-html5 skills-icon" data-tippy-content="HTML"></i>
-            <i class="https://icons8.com/icon/13444/arduino" data-tippy-content="Arduino"></i>
-            <i class="https://user-images.githubusercontent.com/16542113/50175134-4f7b3700-02fc-11e9-914e-cb317fddce4e.png" data-tippy-content="Verilog"></i>
+            <i class="fab fa-css3-alt skills-icon" data-tippy-content="CSS"></i>
+            <i class="fa-solid fa-terminal skills-icon" data-tippy-content="Batch"></i>
+            <i class="https://user-images.githubusercontent.com/16542113/50175134-4f7b3700-02fc-11e9-914e-cb317fddce4e.png"
+               data-tippy-content="Verilog"></i>
 
         </div>
         <div class="container-xxl gradiant-effect" style=" max-width: 1034px;" id="third-heading">
@@ -100,8 +104,13 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><a> Technical Skills</a></h5>
-                              <p class="card-text"> Have experience of programming with <a   href="https://www.comp.nus.edu.sg/~stevenha/cs2040c.html"> data structures and algorithms</a>, as well as <a href="https://nus-cs2113-ay2223s2.github.io/website/"> OOP</a>.</p> 
-                              <p class="card-text"> Have experience of wiring electrical circuit, working with several electrical devices such as LDR, IR, or HardWare Description Programming (such as bare-metal programming, Arduino, Verilog).</p> 
+                              <p class="card-text"> Have experience of programming with <a
+                                      href="https://www.comp.nus.edu.sg/~stevenha/cs2040c.html">
+                                  data structures and algorithms</a>, as well as <a
+                                      href="https://nus-cs2113-ay2223s2.github.io/website/"> OOP</a>.</p>
+                              <p class="card-text"> Have experience of wiring electrical circuit, working with several
+                                  electrical devices such as LDR, IR, or HardWare Description Programming (such as
+                                  bare-metal programming, Arduino, Verilog).</p>
                               <p class="card-text"> Solving serveral Data Problems using Python.</p> 
                         </div>
                     </div>
@@ -113,7 +122,7 @@
                             <h5 class="card-title"><a> Language </a></h5>
                             <p class="card-text"> Native speaker of Vietnamese.</p>
                             <p class="card-text"> Fluent in English.</p>
-                            <p class="card-text"> Have some basic knowlege of Chinese Characters. </p>
+                            <p class="card-text"> Have some basic knowledge of Chinese Characters. </p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +139,15 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><a> Arsdorint Chatbot</a></h5>
-                            <p class="card-text"> My adaptation of NUS Module CS2113 (Software Engineering & Object-Oriented Programming) chatbot Duke, to help user manage their tasks via several commands such as "list", "todo", "deadline", "event", etc.</p>
+                            <p class="card-text"> My adaptation of NUS Module CS2113
+                                (Software Engineering & Object-Oriented Programming) chatbot Duke, to help user manage
+                                their tasks via several commands such as "list", "todo", "deadline", "event", etc.</p>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('/ip', '_blank')" > Deployment
+                            </Button>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('https://github.com/arsdorintbp2003/ip', '_blank')" > Source
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -139,7 +156,16 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><a> Machine Learning Research</a></h5>
-                            <p class="card-text"> A collection of all my presentations' slides in weekly during my internship in HADTech JSC Company, reflecting my research about Machine Learning.</p>
+                            <p class="card-text"> A collection of all my presentations' slides in weekly during my
+                                internship in HADTech JSC Company, reflecting my research about Machine Learning. The
+                                slides are written mostly in Vietnamese, thanks to some references below: </p>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('https://drive.google.com/drive/u/0/folders/1Vzlr4AepDk1YdkM3_O564lcHR-87tB3U', '_blank')" >
+                                Presentations
+                            </Button>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('https://github.com/arsdorintbp2003/ip', '_blank')" > Reference
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -148,7 +174,13 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><a> Arsdorint Video Editor App (Working)</a></h5>
-                            <p class="card-text"> A future video editor app I am currently developing, with projected user interface presented in the link below.</p>
+                            <p class="card-text"> A future video editor app I am currently developing, with projected
+                                user interface presented in the link below. I aim to develop my app with the help of
+                                ffmpeg, an open source code for video editing. </p>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('https://www.canva.com/design/DAD554-jjKg/I8r2H_t6vTLBzw9Muo8nEg/edit?analyticsCorrelationId=91c58aad-f40f-4921-9a4e-6a0d661215ec', '_blank')" >
+                                Interface (Projected)
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -157,7 +189,15 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                           <h5 class="card-title"><a> Alex To The Rescue (Group Project) </a></h5>
-                            <p class="card-text"> My group project of the NUS Module CG2111A (Engineering Principles and Practice II), to build a robotic vehicle (Alex) for search and rescue operation purposes. The motors, embedded controllers, power bank, chassis, and Lidar are also involved.</p>    
+                            <p class="card-text"> My group project of the NUS Module CG2111A (Engineering Principles
+                                and Practice II), to build a robotic vehicle (Alex) for search and rescue operation
+                                purposes. Motors, embedded controllers, power bank, chassis, and Lidar are also involved.</p>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('', '_blank')" > Report
+                            </Button>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('', '_blank')" > Source
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -166,7 +206,15 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><a>The A-Maze-ing Race Project (Group Project)</a></h5>
-                            <p class="card-text"> My group project of the NUS Module CG1111A (Engineering Principles and Practice I), building an self-driving robot vehicle (mBot) with turning function via color detection, and play sound when it reaches the "destination".</p>
+                            <p class="card-text"> My group project of the NUS Module CG1111A (Engineering Principles and
+                                Practice I), building an self-driving robot vehicle (mBot) with turning function via
+                                color detection, and play sound when it reaches the "destination".</p>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('', '_blank')" > Report
+                            </Button>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('', '_blank')" > Source
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -175,7 +223,15 @@
                     <div class="card mb-3 h-100" style="max-width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><a>EG1311 Design & Make Project (Group Project)</a></h5>
-                            <p class="card-text"> My group project of the NUS Module EG1311 (Design & Make), building a robot using Motor Servo, raw materials, and Arduino to keep the ping-pong all passing some obstacles, and throws the ball over a wall.</p>
+                            <p class="card-text"> My group project of the NUS Module EG1311 (Design & Make), building a
+                                robot using Motor Servo, raw materials, and Arduino to keep the ping-pong all passing
+                                some obstacles, and throws the ball over a wall.</p>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('', '_blank')" > Video
+                            </Button>
+                            <Button class="btn btn-light"
+                                    onclick="window.open('', '_blank')" > Source
+                            </Button>
                         </div>
                     </div>
                 </div>
