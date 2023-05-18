@@ -1,35 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Arsdorint Video Editor</title>
+	<title>Video Editing</title>
 </head>
 <body>
-	<h1>Video Editor</h1>
-	<form>
-		<label for="video">Upload video:</label>
-		<input type="file" id="video" name="video">
-		<br>
-		<label for="trim_start">Trim start time:</label>
-		<input type="text" id="trim_start" name="trim_start" placeholder="HH:MM:SS">
-		<br>
-		<label for="trim_end">Trim end time:</label>
-		<input type="text" id="trim_end" name="trim_end" placeholder="HH:MM:SS">
-		<br>
-		<label for="resize_width">Resize width:</label>
-		<input type="number" id="resize_width" name="resize_width" min="1">
-		<br>
-		<label for="resize_height">Resize height:</label>
-		<input type="number" id="resize_height" name="resize_height" min="1">
-		<br>
-		<label for="rotate">Rotate:</label>
-		<select id="rotate" name="rotate">
-			<option value="0">0 degrees</option>
-			<option value="90">90 degrees</option>
-			<option value="180">180 degrees</option>
-			<option value="270">270 degrees</option>
-		</select>
-		<br>
-		<input type="submit" value="Submit">
-	</form>
+<h1>Video Editing</h1>
+<form action="/edit" method="post" enctype="multipart/form-data">
+	<input type="file" name="video">
+	<input type="submit" value="Upload and Edit">
+</form>
 </body>
 </html>
