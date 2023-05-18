@@ -10,7 +10,7 @@ def home():
     return render_template('index.html')
 
 # Video editing route
-@app.route('/edit', methods=['POST'])
+@app.route('ArsdorintVideoCutter/edit', methods=['POST'])
 def edit_video():
     # Get uploaded file
     uploaded_file = request.files['video']
