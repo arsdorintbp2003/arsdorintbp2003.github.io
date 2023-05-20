@@ -7,3 +7,6 @@
     + Major: Computer Engineering
     
     + Minor: Data Analytic 
+
+### Experience
+ - Data & AI Intern In FPT Asia Pacific 
