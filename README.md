@@ -9,4 +9,5 @@
     + Minor: Data Analytic 
 
 ### Experience
- - Data & AI Intern In FPT Asia Pacific 
+ - Data & AI Intern In FPT Asia Pacific (May 2023 - Present)
+ - Machine Learning Intern At HADTech JSC (Mar 2021 - Jun 2021)
