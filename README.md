@@ -12,3 +12,4 @@
  - Data & AI Intern In FPT Asia Pacific (May 2023 - Present)
  - Machine Learning Intern At HADTech JSC (Mar 2021 - Jun 2021)
  - Web Development Intern At Dang Phong Trading & Technology JSC (July 2020 - August 2020)
+ - Deep Learning Intern At Technological Application and Production One Member Limited Liability Company (May 2020 - June 2020)
