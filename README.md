@@ -2,7 +2,7 @@
 
 ### About:
   
-  - 2nd Year Students In National University of Singapore
+  - 3rd Year Students In National University of Singapore (AY2023-2024)
     
     + Major: Computer Engineering
     
