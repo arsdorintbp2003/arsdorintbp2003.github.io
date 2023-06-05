@@ -6,7 +6,7 @@
     
     + Major: Computer Engineering
     
-    + Minor: Data Analytic 
+    + Minor: Data Analytics
 
 ### Experience
  - Data & AI Intern In FPT Asia Pacific (May 2023 - Present)
