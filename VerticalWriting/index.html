@@ -1,18 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Vertical Writing Converter</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+CJK+JP&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="script.js"></script>
 </head>
 <body>
-<div>
-    <textarea id="input" placeholder="Enter paragraph..."></textarea>
-    <button onclick="transformText()">Convert</button>
+<header>
+    <div class="logo">
+        <img src="https://arsdorint.is-a.dev/ARSDORINT.png" alt="Logo" style="width: 60px;"> <!-- Specify the desired width here -->
+        <div class="logo-content">
+            <h1>Vertical Writing Converter</h1>
+            <h6>A Product From Arsdorint Team</h6>
+        </div>
+    </div>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Poem</a></li>
+            <li><a href="#">Other Tools</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+    </nav>
+</header>
+<div class="instruction">
+    <h2>Description</h2>
+    <p> Hello, welcome to Vertical Writing Converter @arsdorint.is-a.dev. This is a tool that converts horizontal
+        writing (in CJKV languages) to vertical writing style. The target user is those who want to view or write
+        traditional-style poems in Chinese characters, or others non-latin scripts, such as Chữ Nôm, Hiragana, Hangul,
+        ... in a traditional way. But for other purposes, such as reading a newspaper or simply a normal paragraph
+        vertically, this tool is also useful. </p>
+    <br/>
+    <p> The website is currently in development, especially to support Latin scripts in a proper way as well. You can
+        try experience the current functions and give me some feedbacks to
+        <a href="window.open('mailto:bui_phuongnam@u.nus.edu', '_blank')">my email</a>. Thank you so much for your support!
+    </p>
 </div>
-<div id="output"></div>
+<main>
+    <div>
+        <input type="text" id="text-name" class="text-name-input" placeholder="Enter text name (optional)">
+    </div>
+    <div>
+        <textarea id="input" placeholder="Enter paragraph..."></textarea>
+        <button onclick="transformText()">Convert</button>
+    </div>
+    <div id="output"></div>
+</main>
+<footer>
+    <p>&copy; 2023 Arsdorint Team. All rights reserved.</p>
+</footer>
 </body>
 </html>
-
-

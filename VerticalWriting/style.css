@@ -1,11 +1,72 @@
 @charset "UTF-8";
 
+:root {
+  --primary-color: #2d365a;
+  --secondary-color: #f7f9fc;
+  --text-color: #333
+}
+
+body, h1, h2, h3, h4, h5, p, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f5f5; /* Near white or light gray background color */
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 .container {
   text-align: center;
+  margin-top: 20px;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.instruction {
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.logo-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.logo h6 {
+  font-size: 11px;
+  margin: 0;
+}
+
+
+#output {
+  margin-top: 20px; /* Add gap between input and output */
+  margin-right: 50px;
 }
 
 textarea {
-  margin-bottom: 10px;
   width: 800px; /* Increased width */
   height: 100px; /* Increased height */
   font-size: 18px; /* Increased font size */
@@ -31,11 +92,164 @@ button {
   text-align: center;
   margin-bottom: 10px; /* Increased margin-bottom */
   font-size: 24px; /* Increased font size */
-}
+  }
 
 .box.empty {
   background-color: #eee;
   border: none;
 }
 
+header {
+  background-color: #303f9f; /* Dark blue color for the header */
+  color: #fff; /* White text color for the header */
+  padding: 20px;
+}
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 24px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #283593;
+  padding: 5px;
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  background-color: #303f9f; /* Dark blue color for the search bar */
+  padding: 5px;
+}
+
+.search-bar input[type="text"] {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #536dfe; /* Blue color for the search button */
+  color: #fff; /* White text color for the search button */
+  cursor: pointer;
+  font-size: 14px;
+  margin: auto;
+}
+
+footer {
+  background-color: #303f9f; /* Dark blue color for the footer */
+  color: #fff; /* White text color for the footer */
+  padding: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 10px;
+}
+
+main {
+  margin-top: 20px;
+  margin-left: 70px;
+  margin-right: 50px;
+}
+
+.text-name-input {
+  width: 797px;
+  height: 25px;
+}
+
+.output-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.text-name-wrapper {
+  float: right;
+  margin-left: 20px;
+}
+
+#output-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#output {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin-top: 50px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.box {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty {
+  background-color: #ccc;
+}
+
+.text-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 4em;
+  margin-right: 0;
+  width: auto;
+  font-family: "Noto Sans CJK JP", sans-serif;
+  /*writing-mode: vertical-lr;*/
+  text-orientation: upright;
+}
+
+.text-name div {
+  margin: 5px 0;
+  /*transform: rotate(-90deg);*//* Rotate each character individually */
+  writing-mode: vertical-lr;
+
+}
