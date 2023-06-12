@@ -81,7 +81,7 @@ button {
 .column {
   display: inline-block;
   vertical-align: top;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .box {
@@ -219,7 +219,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .box {
@@ -252,4 +252,156 @@ main {
   /*transform: rotate(-90deg);*//* Rotate each character individually */
   writing-mode: vertical-lr;
 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.dropdown:hover .dropbtn {
+  background-color: var(--primary-color);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--primary-color);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--secondary-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content.poem-styles {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dropdown-content.poem-styles a {
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content.poem-styles a:hover {
+  background-color: #e8e8e8;
+}
+
+.dropdown.poem-styles:hover .dropdown-content.poem-styles {
+  display: block;
+}
+
+.dropdown-message {
+  color: #333;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.dropdown-content.options {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dropdown-content.options a {
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content.options a:hover {
+  background-color: #e8e8e8;
+}
+
+.dropdown.options:hover .dropdown-content.options {
+  display: block;
+}
+
+.dropdown-label {
+  color: #333;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.dropdown-content.options .option-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content.options .option-group label {
+  margin-bottom: 5px;
+}
+
+.dropdown-content.options .option-group input[type="radio"] {
+  margin-right: 5px;
+}
+
+.column {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 0px; /* Adjust the gap between columns */
+}
+
+.column:last-child {
+  margin-right: 0px; /* Remove the right margin of the last column */
+}
+
+.box {
+  width: 40px; /* Adjust the box width */
+  height: 40px; /* Adjust the box height */
+  border: 1px solid black;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 0px; /* Add a gap between boxes */
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+
+.box.empty {
+  border: none;
+  margin-bottom: 0;
+}
+
+.poem-styles {
+  margin-top: 10px; /* Add a gap between the poem style container and the input elements */
+}
+
+.kieu-story .box:nth-child(6n + 1) {
+  margin-bottom: 20px; /* Add a larger gap after every 6-character sentence in Kieu Story Style */
 }

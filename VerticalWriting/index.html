@@ -21,7 +21,15 @@
     <nav>
         <ul class="navbar">
             <li><a href="#">Home</a></li>
-            <li><a href="poem.html">Poem</a></li>
+            <!--<li><a href="/poem">Poem</a></li>-->
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Poem</a>
+                <div class="dropdown-content">
+                    <a href="/poem">Poem 1</a>
+                    <a href="#">Poem 2</a>
+                    <a href="#">Poem 3</a>
+                </div>
+            </li>
             <li><a href="#">Other Tools</a></li>
         </ul>
         <div class="search-bar">
@@ -40,19 +48,32 @@
     <br/>
     <p> The website is currently in development, especially to support Latin scripts in a proper way as well. You can
         try experience the current functions and give me some feedbacks to
-        <a href="window.open('mailto:bui_phuongnam@u.nus.edu', '_blank')">my email</a>. Thank you so much for your support!
+        <a href="mailto:bui_phuongnam@u.nus.edu" target="_blank">my email</a>. Thank you so much for your support!
     </p>
 </div>
 <main>
     <div>
-        <input type="text" id="text-name" class="text-name-input" placeholder="Enter text name (optional)">
-    </div>
-    <div>
+        <span class="dropdown-message">Choose your text style:</span>
+        <select id="content-type" onchange="handleContentTypeChange()">
+            <option value="text">Normal Text</option>
+            <option value="poem">Poem</option>
+        </select>
+        <div id="poem-style-container" style="display: none;" class="dropdown poem-styles">
+            <span class="dropdown-message">Choose your poem style:</span>
+            <select id="poem-style">
+                <option value="normal">Normal Style</option>
+                <option value="kieu-story">Kieu Story Style</option>
+            </select>
+        </div>
+        <div>
+            <input type="text" id="text-name" class="text-name-input" placeholder="Enter text name (optional)">
+        </div>
         <textarea id="input" placeholder="Enter paragraph..."></textarea>
         <button onclick="transformText()">Convert</button>
     </div>
     <div id="output"></div>
 </main>
+
 <footer>
     <p>&copy; 2023 Arsdorint Team. All rights reserved.</p>
 </footer>
