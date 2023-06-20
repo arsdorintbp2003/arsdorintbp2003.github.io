@@ -38,8 +38,8 @@
         </div>
     </nav>
 </header>
-<div class="instruction">
-    <h2>Description</h2>
+<div class="introduction">
+    <h1>Description</h1>
     <p> Hello, welcome to Vertical Writing Converter @arsdorint.is-a.dev. This is a tool that converts horizontal
         writing (in CJKV languages) to vertical writing style. The target user is those who want to view or write
         traditional-style poems in Chinese characters, or others non-latin scripts, such as Chữ Nôm, Hiragana, Hangul,
@@ -53,11 +53,23 @@
 </div>
 <main>
     <div>
-        <span class="dropdown-message">Choose your text style:</span>
-        <select id="content-type" onchange="handleContentTypeChange()">
-            <option value="text">Normal Text</option>
-            <option value="poem">Poem</option>
-        </select>
+        <div class="dropdown">
+            <span class="dropdown-message">Choose your text style:</span>
+            <select id="content-type" onchange="handleContentTypeChange()">
+                <option value="text">Normal Text</option>
+                <option value="poem">Poem</option>
+            </select>
+        </div>
+
+        <div class="dropdown">
+            <span class="dropdown-message">Choose font weight:</span>
+            <select id="font-weight-select">
+                <option value="normal">Normal</option>
+                <option value="bold">Bold</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+
         <div id="poem-style-container" style="display: none;" class="dropdown poem-styles">
             <span class="dropdown-message">Choose your poem style:</span>
             <select id="poem-style">
@@ -65,17 +77,24 @@
                 <option value="kieu-story">Kieu Story Style</option>
             </select>
         </div>
+
+        <br/>
+
         <div>
             <input type="text" id="text-name" class="text-name-input" placeholder="Enter text name (optional)">
         </div>
+
         <textarea id="input" placeholder="Enter paragraph..."></textarea>
+
         <button onclick="transformText()">Convert</button>
     </div>
-    <div id="output"></div>
+    <div class="output-container" id="output"></div>
+    <br/>
 </main>
-
+<br/>
 <footer>
     <p>&copy; 2023 Arsdorint Team. All rights reserved.</p>
 </footer>
 </body>
 </html>
+

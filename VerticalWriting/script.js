@@ -1,4 +1,4 @@
-const specialCharacters = /[.,?!“”‘’，。！：？]/g;
+const specialCharacters = /[.,?!“”‘’'，。！：？]/g;
 
 function handleContentTypeChange() {
     const contentTypeSelect = document.getElementById("content-type");
@@ -24,20 +24,27 @@ function transformText() {
     if (contentType === "poem" && poemStyle === "kieu-story") {
         transformTextKieuStory(sentences, contentType, poemStyle, output, previousSentenceBoxCount);
     } else {
-        transformTextNormally(sentences, contentType,  poemStyle, output, previousSentenceBoxCount);
+        transformTextNormally(sentences, contentType, poemStyle, output, previousSentenceBoxCount);
     }
 
     if (textName) {
         const textNameElement = document.createElement("div");
         textNameElement.classList.add("text-name");
-
-        Array.from(textName).forEach(function (character) {
-            const characterElement = document.createElement("div");
-            characterElement.innerText = character;
-            if (isLatinCharacter(character)) {
-                characterElement.classList.add("latin");
+        const words = textName.trim().split(/[ -]+/);
+        words.forEach(function (word) {
+            const wordElem = document.createElement("div");
+            if (isLatinOrCyrillicCharacter(word)) {
+                wordElem.innerText = word;
+                textNameElement.appendChild(wordElem);
+            } else {
+                Array.from(word).forEach(function (character) {
+                    const characterElement = document.createElement("div");
+                    characterElement.innerText = character;
+                    //wordElem.appendChild(characterElement);
+                    textNameElement.appendChild(characterElement);
+                });
             }
-            textNameElement.appendChild(characterElement);
+            //textNameElement.appendChild(wordElem);
         });
 
         const textNameWrapper = document.createElement("div");
@@ -46,37 +53,58 @@ function transformText() {
     }
 }
 
-function processText(sentence, contentType, poemStyle, column, sentenceBoxCount) {
-    Array.from(sentence).forEach(function (character) {
-        if (character !== " ") {
+
+function processText(sentence, contentType, poemStyle, column, sentenceBoxCount, fontWeight) {
+    const words = sentence.trim().split(/[ -]+/);
+    words.forEach(function (word) {
+        if (isLatinOrCyrillicCharacter(word) || isVietnameseWord(word)) {
+            // Process Latin / Cyrillic / Vietnamese words
             const box = document.createElement("div");
             box.classList.add("box");
-            box.innerText = character;
-            if (isLatinCharacter(character)) {
-                box.classList.add("latin");
-            }
+            const wordBox = document.createElement("div");
+            wordBox.innerText = word;
+            box.appendChild(wordBox);
+            box.classList.add("latin");
+            sentenceBoxCount++;
             if (contentType === "poem") {
                 if (poemStyle === "kieu-story") {
-                    // Add additional styles for Kieu Story Style
                     box.classList.add("kieu-story");
                 }
             }
+            box.style.fontWeight = fontWeight;
             column.appendChild(box);
-            sentenceBoxCount++;
+        } else {
+            // Process CJKV characters or other characters
+            Array.from(word).forEach(function (character) {
+                const box = document.createElement("div");
+                box.classList.add("box");
+                const characterBox = document.createElement("div");
+                characterBox.innerText = character;
+                box.appendChild(characterBox);
+                sentenceBoxCount++;
+                if (contentType === "poem") {
+                    if (poemStyle === "kieu-story") {
+                        box.classList.add("kieu-story");
+                    }
+                }
+                box.style.fontWeight = fontWeight;
+                column.appendChild(box);
+            });
         }
     });
 }
 
 function transformTextKieuStory(sentences, contentType, poemStyle, output, previousSentenceBoxCount) {
+    const fontWeight = document.getElementById("font-weight-select").value;
     for (let i = 0; i < sentences.length; i += 2) {
         const sentence1 = sentences[i].replace(specialCharacters, "").trim();
         const sentence2 = sentences[i + 1] ? sentences[i + 1].replace(specialCharacters, "").trim() : "";
         const column = document.createElement("div");
         column.classList.add("column");
         let sentenceBoxCount = 0;
-        processText(sentence1, contentType, poemStyle, column, sentenceBoxCount);
+        processText(sentence1, contentType, poemStyle, column, sentenceBoxCount, fontWeight);
         addBoxBetweenSentences(column);
-        processText(sentence2, contentType, poemStyle, column, sentenceBoxCount);
+        processText(sentence2, contentType, poemStyle, column, sentenceBoxCount, fontWeight);
         output.appendChild(column);
         previousSentenceBoxCount = sentenceBoxCount;
     }
@@ -98,18 +126,12 @@ function mergeEmptyBoxes(output) {
         for (let j = 0; j < numBoxes; j++) {
             const box = boxes[j];
             if (box.innerText === "") {
-                //column.removeChild(box);
-
-                // Remove left border from empty box in the first column
                 if (i % 25 === 0 && i % 25 !== numColumns - 1) {
                     box.style.borderLeft = "none";
                 }
-                // Remove right border from empty box in the last column
-                else if (i % 25 === numColumns - 1 && i % 25 !== 0) {
+                if (i % 25 === 24 && i % 25 !== 0 || i === numColumns - 1) {
                     box.style.borderRight = "none";
-                }
-                // Remove both left and right borders from empty boxes in the middle columns
-                else if (i % 25 !== 0 && i % 25 !== numColumns - 1) {
+                } else if (i % 25 !== 0 && i % 25 !== 24) {
                     box.style.borderLeft = "none";
                     box.style.borderRight = "none";
                 }
@@ -119,18 +141,19 @@ function mergeEmptyBoxes(output) {
 }
 
 function transformTextNormally(sentences, contentType, poemStyle, output, previousSentenceBoxCount) {
+    const fontWeight = document.getElementById("font-weight-select").value;
     for (let i = 0; i < sentences.length; i++) {
         const sentence = sentences[i].replace(specialCharacters, "").trim();
         const column = document.createElement("div");
         column.classList.add("column");
         let sentenceBoxCount = 0; // Number of boxes in the current sentence
-        processText(sentence, contentType, poemStyle, column, sentenceBoxCount);
+        processText(sentence, contentType, poemStyle, column, sentenceBoxCount, fontWeight);
         output.appendChild(column);
         previousSentenceBoxCount = sentenceBoxCount;
     }
 }
+
 function addBoxBetweenSentences(column) {
-    // Add a gap between the two sentences
     const gapBox = document.createElement("div");
     gapBox.classList.add("box", "gap");
     column.appendChild(gapBox);
@@ -139,4 +162,14 @@ function addBoxBetweenSentences(column) {
 function isLatinCharacter(character) {
     const latinAlphabetRegex = /^[A-Za-z]+$/;
     return latinAlphabetRegex.test(character);
+}
+
+function isLatinOrCyrillicCharacter(word) {
+    const latinCyrillicRegex = /^[a-zA-Z\u00C0-\u024F\u0400-\u04FF]+$/;
+    return latinCyrillicRegex.test(word);
+}
+
+function isVietnameseWord(word) {
+    const vietnameseRegex = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i;
+    return vietnameseRegex.test(word);
 }

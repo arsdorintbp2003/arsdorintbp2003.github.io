@@ -26,19 +26,26 @@ body {
   margin-right: 50px;
 }
 
-.instruction {
+h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 48px;
+  text-align: center;
+}
+.introduction {
   padding: 20px;
   background-color: #f5f5f5;
   margin-bottom: 20px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 120px;
+  margin-right: 150px;
+  text-align: justify;
 }
 
 .logo {
   display: flex;
   align-items: center;
 }
-
+w
 .logo img {
   width: 60px;
   height: auto;
@@ -63,40 +70,75 @@ body {
 
 #output {
   margin-top: 20px; /* Add gap between input and output */
-  margin-right: 50px;
+  margin-right: 150px;
+  text-align: center;
+  vertical-align: top;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
 }
 
 textarea {
-  width: 800px; /* Increased width */
-  height: 100px; /* Increased height */
-  font-size: 18px; /* Increased font size */
+  width: 400px;
+  height: 200px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 button {
   margin-bottom: 10px;
   padding: 10px 40px; /* Increased padding */
   font-size: 18px; /* Increased font size */
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
 }
 
 .column {
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 0px;
+  margin: 0px; /* Adjust the gap between columns */
 }
 
 .box {
+  display: block;
+  width: 40px;
+  height: 40px;
   border: 1px solid black;
-  width: 45px; /* Increased width */
-  height: 45px; /* Increased height */
-  line-height: 45px; /* Increased line-height */
   text-align: center;
-  margin-bottom: 10px; /* Increased margin-bottom */
-  font-size: 24px; /* Increased font size */
-  }
+  line-height: 40px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-family: "Nom Na Tong", Arial, sans-serif;
+}
+
+.word-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.character-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+}
 
 .box.empty {
   background-color: #eee;
-  border: none;
+  border: 1px solid black;
 }
 
 header {
@@ -108,6 +150,7 @@ header {
 .logo {
   display: flex;
   align-items: center;
+  margin-left: 120px;
 }
 
 .logo img {
@@ -125,8 +168,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin-top: 15px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 120px;
+  margin-right: 150px;
   background-color: #283593;
   padding: 5px;
 }
@@ -179,56 +222,28 @@ footer {
 }
 
 main {
-  margin-top: 20px;
-  margin-left: 70px;
-  margin-right: 50px;
+  margin: 0 20px 0px 150px;
 }
 
 .text-name-input {
   width: 797px;
   height: 25px;
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 .output-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-start;
+  text-align: center;
+  margin-bottom: 100px;
+  margin-top: 20px;
 }
 
 .text-name-wrapper {
   float: right;
   margin-left: 20px;
-}
-
-#output-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#output {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  margin-top: 50px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-  margin-right: 0px;
-}
-
-.box {
-  width: 25px;
-  height: 25px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .empty {
@@ -237,26 +252,26 @@ main {
 
 .text-name {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 4em;
-  margin-right: 0;
+  align-items: center;
+  font-size: 2em;
   width: auto;
   font-family: "Noto Sans CJK JP", sans-serif;
-  /*writing-mode: vertical-lr;*/
-  text-orientation: upright;
+  vertical-align: top;
+  writing-mode: vertical-lr;
+  margin-left: 20px;
+  justify-content: center;
 }
 
 .text-name div {
   margin: 5px 0;
-  /*transform: rotate(-90deg);*//* Rotate each character individually */
-  writing-mode: vertical-lr;
-
+  writing-mode: horizontal-tb;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
+  position: relative;
+  margin-right: 20px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -322,7 +337,9 @@ main {
 .dropdown-message {
   color: #333;
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 2px;
+  font-weight: bold;
+  margin-right: 8px;
 }
 
 .dropdown-content.options {
@@ -371,31 +388,8 @@ main {
   margin-right: 5px;
 }
 
-.column {
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 0px; /* Adjust the gap between columns */
-}
-
 .column:last-child {
   margin-right: 0px; /* Remove the right margin of the last column */
-}
-
-.box {
-  width: 40px; /* Adjust the box width */
-  height: 40px; /* Adjust the box height */
-  border: 1px solid black;
-  text-align: center;
-  line-height: 40px;
-  margin-bottom: 0px; /* Add a gap between boxes */
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-
-.box.empty {
-  border: none;
-  margin-bottom: 0;
 }
 
 .poem-styles {
@@ -404,4 +398,18 @@ main {
 
 .kieu-story .box:nth-child(6n + 1) {
   margin-bottom: 20px; /* Add a larger gap after every 6-character sentence in Kieu Story Style */
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #555;
 }
