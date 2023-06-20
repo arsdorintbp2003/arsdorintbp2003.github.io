@@ -82,13 +82,16 @@
 
         <div>
             <input type="text" id="text-name" class="text-name-input" placeholder="Enter text name (optional)">
+            <textarea id="input" placeholder="Enter paragraph..."></textarea>
         </div>
-
-        <textarea id="input" placeholder="Enter paragraph..."></textarea>
-
         <button onclick="transformText()">Convert</button>
     </div>
-    <div class="output-container" id="output"></div>
+    <div class="output-container" id="output">
+        <div class = "page">
+            <div class="text-name" id="output-text-name"></div>
+        </div>
+        <div class="text-content" id="output-text-content"></div>
+    </div>
     <br/>
 </main>
 <br/>
