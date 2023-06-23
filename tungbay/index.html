@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vertical Writing Converter</title>
+    <title>Tung Bay - Vertical Writing Converter</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+CJK+JP&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -13,14 +13,14 @@
     <div class="logo">
         <img src="https://arsdorint.is-a.dev/ARSDORINT.png" alt="Logo" style="width: 60px;"> <!-- Specify the desired width here -->
         <div class="logo-content">
-            <h1>Vertical Writing Converter</h1>
+            <h1>Tung Bay - Vertical Writing Converter</h1>
             <h6>A Product From Arsdorint Team</h6>
         </div>
     </div>
 
     <nav>
         <ul class="navbar">
-            <li><a href="#">Home</a></li>
+            <li><a href="/">Home</a></li>
             <!--<li><a href="/poem">Poem</a></li>-->
             <li class="dropdown">
                 <a href="#" class="dropbtn">Poem</a>
@@ -40,7 +40,7 @@
 </header>
 <div class="introduction">
     <h1>Description</h1>
-    <p> Hello, welcome to Vertical Writing Converter @arsdorint.is-a.dev. This is a tool that converts horizontal
+    <p> Hello, welcome to tungbay @arsdorint.is-a.dev. This is a tool that converts horizontal
         writing (in CJKV languages) to vertical writing style. The target user is those who want to view or write
         traditional-style poems in Chinese characters, or others non-latin scripts, such as Chữ Nôm, Hiragana, Hangul,
         ... in a traditional way. But for other purposes, such as reading a newspaper or simply a normal paragraph
@@ -50,6 +50,15 @@
         try experience the current functions and give me some feedbacks to
         <a href="mailto:bui_phuongnam@u.nus.edu" target="_blank">my email</a>. Thank you so much for your support!
     </p>
+</div>
+
+<div class="instruction">
+    <h1>Instructions</h1>
+    <p> You can choose your desire literature type (normal text or poem), and font weight for better visualization.</p>
+    <br/>
+    <p> For poem, there is a choice to convert your poem into "Kieu Story Style", which is most suitable for "lục bát"
+    (six-eight) poem. The style resembles <a href="https://thuonghieuvaphapluat.vn/Images/dinhhieu/2020/09/28/2%20(1).JPG">
+        The Tale of Kieu" (1866 version)'s one</a>, with some modifications.  </p>
 </div>
 <main>
     <div>
@@ -87,9 +96,7 @@
         <button onclick="transformText()">Convert</button>
     </div>
     <div class="output-container" id="output">
-        <div class = "page">
-            <div class="text-name" id="output-text-name"></div>
-        </div>
+        <div class="text-name" id="output-text-name"></div>
         <div class="text-content" id="output-text-content"></div>
     </div>
     <br/>

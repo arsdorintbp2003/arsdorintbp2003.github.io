@@ -1,4 +1,4 @@
-const specialCharacters = /[.,?!“”‘’'，。！：？]/g;
+const specialCharacters = /[.,?!“”‘’:'，。！：？]/g;
 
 function handleContentTypeChange() {
     const contentTypeSelect = document.getElementById("content-type");
@@ -12,66 +12,60 @@ function handleContentTypeChange() {
 }
 
 function transformText() {
-  const contentType = document.getElementById("content-type").value;
-  const poemStyle = document.getElementById("poem-style").value;
-  const inputText = document.getElementById("input").value;
-  const textName = document.getElementById("text-name").value;
-  const sentences = inputText.split(/[.\n?!]+/);
-  const output = document.getElementById("output");
-  const textNameElement = document.getElementById("output-text-name");
+    const contentType = document.getElementById("content-type").value;
+    const poemStyle = document.getElementById("poem-style").value;
+    const inputText = document.getElementById("input").value;
+    const textName = document.getElementById("text-name").value;
+    const sentences = inputText.split(/[.\n?!]+/);
+    const output = document.getElementById("output");
+    const textNameElement = document.getElementById("output-text-name");
 
-  if (textNameElement) {
-    textNameElement.textContent = textName;
-  } else {
-    const newTextNameElement = document.createElement("div");
-    newTextNameElement.classList.add("text-name");
-    newTextNameElement.id = "output-text-name";
-    newTextNameElement.textContent = textName;
-    output.insertBefore(newTextNameElement, output.firstChild);
-  }
+    if (textNameElement) textNameElement.textContent = textName;
+    else {
+        const newTextNameElement = document.createElement("div");
+        newTextNameElement.classList.add("text-name");
+        newTextNameElement.id = "output-text-name";
+        newTextNameElement.textContent = textName;
+        output.insertBefore(newTextNameElement, output.firstChild);
+    }
+    output.innerHTML = "";
 
-  output.innerHTML = "";
+    let previousSentenceBoxCount = 0;
+    if (contentType === "poem" && poemStyle === "kieu-story") {
+        transformTextKieuStory(sentences, contentType, poemStyle, output, previousSentenceBoxCount);
+    } else {
+        transformTextNormally(sentences, contentType, poemStyle, output, previousSentenceBoxCount);
+    }
 
-  let previousSentenceBoxCount = 0;
-  if (contentType === "poem" && poemStyle === "kieu-story") {
-    transformTextKieuStory(sentences, contentType, poemStyle, output, previousSentenceBoxCount);
-  } else {
-    transformTextNormally(sentences, contentType, poemStyle, output, previousSentenceBoxCount);
-  }
+    if (textName) {
+        const pageElement = document.createElement("div");
+        pageElement.classList.add("page");
 
-  if (textName) {
-    const pageElement = document.createElement("div");
-    pageElement.classList.add("page");
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("text-container");
 
-    const textContainer = document.createElement("div");
-    textContainer.classList.add("text-container");
-
-    const textNameElement = document.createElement("div");
-    textNameElement.classList.add("text-name");
-    const words = textName.trim().split(/[ -]+/);
-    words.forEach(function (word) {
-      const wordElem = document.createElement("div");
-      if (isLatinOrCyrillicCharacter(word) || isVietnameseWord(word)) {
-        wordElem.innerText = word;
-        textNameElement.appendChild(wordElem);
-      } else {
-        Array.from(word).forEach(function (character) {
-          const characterElement = document.createElement("div");
-          characterElement.innerText = character;
-          textNameElement.appendChild(characterElement);
+        const textNameElement = document.createElement("div");
+        textNameElement.classList.add("text-name");
+        const words = textName.trim().split(/[ -]+/);
+        words.forEach(function (word) {
+            const wordElem = document.createElement("div");
+            if (isLatinOrCyrillicCharacter(word) || isVietnameseWord(word)) {
+                wordElem.innerText = word;
+                textNameElement.appendChild(wordElem);
+            } else {
+                Array.from(word).forEach(function (character) {
+                    const characterElement = document.createElement("div");
+                    characterElement.innerText = character;
+                    textNameElement.appendChild(characterElement);
+                });
+            }
         });
-      }
-    });
-
-    //textContainer.appendChild(textNameElement);
-    pageElement.appendChild(textNameElement);
-
-    const textContentElement = document.createElement("div");
-    textContentElement.classList.add("text-content");
-    pageElement.appendChild(textContentElement);
-
-    output.insertBefore(pageElement, output.firstChild);
-  }
+        pageElement.appendChild(textNameElement);
+        const textContentElement = document.createElement("div");
+        textContentElement.classList.add("text-content");
+        pageElement.appendChild(textContentElement);
+        output.insertBefore(pageElement, output.firstChild);
+    }
 }
 
 
@@ -105,12 +99,10 @@ function processText(sentence, contentType, poemStyle, column, sentenceBoxCount,
             wordBox.innerText = word;
             box.appendChild(wordBox);
             box.classList.add("latin");
+            box.classList.add("small-font");
             sentenceBoxCount++;
-            if (contentType === "poem") {
-                if (poemStyle === "kieu-story") {
-                    box.classList.add("kieu-story");
-                }
-            }
+
+            if (contentType === "poem") if (poemStyle === "kieu-story") box.classList.add("kieu-story");
             box.style.fontWeight = fontWeight;
             column.appendChild(box);
         } else {
@@ -122,11 +114,8 @@ function processText(sentence, contentType, poemStyle, column, sentenceBoxCount,
                 characterBox.innerText = character;
                 box.appendChild(characterBox);
                 sentenceBoxCount++;
-                if (contentType === "poem") {
-                    if (poemStyle === "kieu-story") {
-                        box.classList.add("kieu-story");
-                    }
-                }
+
+                if (contentType === "poem") if (poemStyle === "kieu-story") box.classList.add("kieu-story");
                 box.style.fontWeight = fontWeight;
                 column.appendChild(box);
             });
@@ -136,15 +125,11 @@ function processText(sentence, contentType, poemStyle, column, sentenceBoxCount,
 
 function transformTextKieuStory(sentences, contentType, poemStyle, output, previousSentenceBoxCount) {
     const maxColumnsPerPage = 12;
-	const fontSize = 40;
-	const marginLeft = 19;
     let currentPage = createPage();
     let currentColumnCount = 0;
     const fontWeight = document.getElementById("font-weight-select").value;
     const textName = document.getElementById("text-name").value;
     const textNameWords = textName.trim().split(/[ -]+/);
-
-	const { maxTextName, maxTextNameSize, maxTextNameWidth } = getMaxTextWidth(textNameWords);
 
     for (let i = 0; i < sentences.length; i += 2) {
         const sentence1 = sentences[i].replace(specialCharacters, "").trim();
@@ -167,8 +152,6 @@ function transformTextKieuStory(sentences, contentType, poemStyle, output, previ
     }
     output.appendChild(currentPage);
     mergeEmptyBoxes(output, maxColumnsPerPage);
-    const textNameWidth = (maxTextNameWidth + marginLeft) / 2;
-	//getOutputMargin(output, textNameWidth);
 }
 
 function mergeEmptyBoxes(output, maxColumnsPerPage) {
@@ -205,16 +188,13 @@ function mergeEmptyBoxes(output, maxColumnsPerPage) {
 }
 
 function transformTextNormally(sentences, contentType, poemStyle, output, previousSentenceBoxCount) {
-    const maxColumnsPerPage = 24;
-    const fontSize = 40;
-    const marginLeft = 19;
+    const maxColumnsPerPage = 12;
     let currentPage = createPage();
     let currentColumnCount = 0;
     const fontWeight = document.getElementById("font-weight-select").value;
     const textName = document.getElementById("text-name").value;
     const textNameWords = textName.trim().split(/[ -]+/);
 
-	const { maxTextName, maxTextNameSize, maxTextNameWidth } = getMaxTextWidth(textNameWords);
 
     for (let i = 0; i < sentences.length; i++) {
         const sentence = sentences[i].replace(specialCharacters, "").trim();
@@ -233,75 +213,12 @@ function transformTextNormally(sentences, contentType, poemStyle, output, previo
         }
     }
     output.appendChild(currentPage);
-	const textNameWidth = (maxTextNameWidth + maxTextNameWidth / maxTextNameSize) / 2;
-    //getOutputMargin(output, textNameWidth);
-}
-
-function getMaxTextWidth(textNameWords) {
-    let maxTextNameSize = 0;
-    let maxTextName = '';
-    let maxTextNameWidth = 0;
-
-    textNameWords.forEach(function (word) {
-        const wordSize = word.length;
-        let wordWidth = 0;
-
-        for (let i = 0; i < word.length; i++) {
-            const character = word[i];
-            const characterWidth = getCharacterWidth(character);
-            wordWidth += characterWidth;
-        }
-
-        if (wordSize > maxTextNameSize || (wordSize === maxTextNameSize && wordWidth > maxTextNameWidth)) {
-            maxTextNameSize = wordSize;
-            maxTextName = word;
-            maxTextNameWidth = wordWidth;
-        }
-    });
-
-    return {
-        maxTextName,
-        maxTextNameSize,
-        maxTextNameWidth
-    };
-}
-
-
-function getOutputMargin(output, textNameWidth) {
-	const pages = output.getElementsByClassName("page");
-    for (let i = 1; i < pages.length; i++) {
-        const pageColumns = pages[i].getElementsByClassName("column");
-        for (let j = 0; j < pageColumns.length; j++) {
-            const column = pageColumns[j];
-            const boxes = column.getElementsByClassName("box");
-            for (let k = 0; k < boxes.length; k++) {
-                const box = boxes[k];
-                box.style.marginRight = `${textNameWidth}px`;
-            }
-        }
-    }
-}
-
-function getCharacterWidth(character) {
-    const span = document.createElement("span");
-    span.style.fontSize = "40px"; // Set the desired font size
-    span.style.visibility = "hidden";
-    span.textContent = character;
-    document.body.appendChild(span);
-    const width = span.getBoundingClientRect().width;
-    document.body.removeChild(span);
-    return width;
 }
 
 function addBoxBetweenSentences(column) {
     const gapBox = document.createElement("div");
     gapBox.classList.add("box", "gap");
     column.appendChild(gapBox);
-}
-
-function isLatinCharacter(character) {
-    const latinAlphabetRegex = /^[A-Za-z]+$/;
-    return latinAlphabetRegex.test(character);
 }
 
 function isLatinOrCyrillicCharacter(word) {
