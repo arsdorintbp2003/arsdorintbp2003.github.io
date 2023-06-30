@@ -37,8 +37,8 @@ h1 {
     padding: 20px;
     background-color: #f5f5f5;
     margin-top: 50px;
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 250px;
+    margin-right: 250px;
     text-align: justify;
     font-size: 20px;
 }
@@ -220,7 +220,7 @@ footer {
 }
 
 main {
-    margin: 100px 300px 100px 300px;
+    margin: 100px 200px 100px 200px;
     text-align: center;
 }
 
