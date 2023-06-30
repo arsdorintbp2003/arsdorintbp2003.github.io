@@ -33,17 +33,12 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    text-align: center;
-    margin-top: 30px;
-}
-
 .introduction, .instruction {
     padding: 20px;
     background-color: #f5f5f5;
-    margin-bottom: 20px;
-    margin-left: 200px;
-    margin-right: 220px;
+    margin-top: 50px;
+    margin-left: 350px;
+    margin-right: 350px;
     text-align: justify;
     font-size: 20px;
 }
@@ -51,10 +46,11 @@ h2 {
 .logo {
     display: flex;
     align-items: center;
+    margin-left: 150px;
 }
 
 .logo img {
-    width: 60px;
+    width: 100px;
     height: auto;
     margin-right: 10px;
 }
@@ -158,18 +154,7 @@ header {
     background-color: #303f9f; /* Dark blue color for the header */
     color: #fff; /* White text color for the header */
     padding: 20px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    margin-left: 120px;
-}
-
-.logo img {
-    width: 40px;
-    height: auto;
-    margin-right: 10px;
+    height: 150px;
 }
 
 .logo h1 {
@@ -180,8 +165,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
-    margin-left: 120px;
+    margin-top: 45px;
+    margin-left: 150px;
     margin-right: 150px;
     background-color: #283593;
     padding: 5px;
@@ -235,7 +220,7 @@ footer {
 }
 
 main {
-    margin: 100px 200px 100px 200px;
+    margin: 100px 300px 100px 300px;
     text-align: center;
 }
 
@@ -409,15 +394,16 @@ button:hover {
 }
 
 .page {
-    width: 1000px;
+    width: 600px;
     margin-bottom: 50px;
     direction: rtl;
     text-align: center;
     justify-content: center;
     height: 100%;
     border: 2px solid #000;
-    padding: 20px;
-    margin-top: 40px;
+    margin-top: 50px;
+    padding: 40px;
+    height: 800px;
 }
 
 .page .text-name {
@@ -425,7 +411,7 @@ button:hover {
 	margin-top: 200px;
 	margin-bottom: 200px;
 	border: 1.5px solid #000;
-	padding: 10px;
+	padding: 20px;
 }
 
 .small-font {
