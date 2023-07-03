@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Editing</title>
+	<link rel="stylesheet" href="static/style.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<script>
+        function handleEditOptionChange() {
+            var selectedOption = document.getElementById("edit_option").value;
+            var options = document.getElementsByClassName("edit-option");
+            for (var i = 0; i < options.length; i++) {
+                options[i].style.display = "none";
+            }
+            document.getElementById(selectedOption).style.display = "block";
+        }
+
+        function addSplitTime() {
+            var splitTimesContainer = document.getElementById("split_times_container");
+            var newSplitTimeDiv = document.createElement("div");
+            newSplitTimeDiv.innerHTML = `
+                <label>Start Time:</label>
+                <input type="text" name="split_start_time[]" placeholder="HH:MM:SS">
+                <label>End Time:</label>
+                <input type="text" name="split_end_time[]" placeholder="HH:MM:SS">
+            `;
+            splitTimesContainer.appendChild(newSplitTimeDiv);
+        }
+    </script>
+</head>
+<body>
+<header>
+	<div class="logo">
+		<img src="https://arsdorint.is-a.dev/ARSDORINT.png" alt="Logo" style="width: 60px;"> <!-- Specify the desired width here -->
+		<div class="logo-content">
+			<h1>Arsdorint Video Cutter</h1>
+			<h6>A Product From Arsdorint Team</h6>
+		</div>
+	</div>
+
+	<nav>
+		<ul class="navbar">
+			<li><a href="/">Home</a></li>
+			<!--<li><a href="/poem">Poem</a></li>-->
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Poem</a>
+				<div class="dropdown-content">
+					<a href="/poem">Poem 1</a>
+					<a href="#">Poem 2</a>
+					<a href="#">Poem 3</a>
+				</div>
+			</li>
+			<li><a href="#">Other Tools</a></li>
+		</ul>
+		<div class="search-bar">
+			<input type="text" placeholder="Search...">
+			<button>Search</button>
+		</div>
+	</nav>
+</header>
+<main>
+	<h1>Video Editing</h1>
+	<form action="/edit" method="post" enctype="multipart/form-data">
+		<div class="dropdown">
+			<span class="dropdown-message">Select an editing option:</span>
+			<select id="edit_option" name="edit_option" onchange="handleEditOptionChange()">
+				<option value="">-- Select Option --</option>
+				<option value="cut">Cut</option>
+				<option value="join">Join</option>
+				<option value="split">Split</option>
+				<option value="audio_mixing">Audio Mixing</option>
+			</select>
+		</div>
+		<div id="cut" class="edit-option" style="display: none;">
+			<label for="video_input">Video:</label>
+			<input type="file" id="video_input" name="video" accept=".mp4, .mov">
+			<br>
+			<label for="start_time_input">Start Time:</label>
+			<input type="text" id="start_time_input" name="start_time" placeholder="HH:MM:SS">
+			<br>
+			<label for="end_time_input">End Time:</label>
+			<input type="text" id="end_time_input" name="end_time" placeholder="HH:MM:SS">
+		</div>
+		<div id="join" class="edit-option" style="display: none;">
+			<label for="join_files_input">Join Files:</label>
+			<input type="file" id="join_files_input" name="join_files" accept=".mp4, .mov" multiple>
+		</div>
+		<div id="split" class="edit-option" style="display: none;">
+			<div id="split_times_container">
+				<div>
+					<label>Start Time:</label>
+					<input type="text" name="split_start_time[]" placeholder="HH:MM:SS">
+					<label>End Time:</label>
+					<input type="text" name="split_end_time[]" placeholder="HH:MM:SS">
+				</div>
+			</div>
+			<button type="button" onclick="addSplitTime()">Add Split Time</button>
+		</div>
+		<div id="audio_mixing" class="edit-option" style="display: none;">
+			<label for="audio_mixing_input">Video:</label>
+			<input type="file" id="audio_mixing_input" name="audio_mixing_file" accept=".mp4, .mov">
+			<br>
+			<label for="audio_input">Audio:</label>
+			<input type="file" id="audio_input" name="audio_file" accept=".mp3, .wav">
+		</div>
+		<input type="submit" value="Upload and Edit">
+	</form>
+</main>
+<footer>
+	<p>&copy; 2023 Arsdorint Team. All rights reserved.</p>
+</footer>
+</body>
+</html>
