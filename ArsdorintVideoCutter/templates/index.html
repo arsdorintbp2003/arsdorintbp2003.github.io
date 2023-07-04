@@ -14,17 +14,14 @@
             document.getElementById(selectedOption).style.display = "block";
         }
 
-        function addSplitTime() {
-            var splitTimesContainer = document.getElementById("split_times_container");
-            var newSplitTimeDiv = document.createElement("div");
-            newSplitTimeDiv.innerHTML = `
-                <label>Start Time:</label>
-                <input type="text" name="split_start_time[]" placeholder="HH:MM:SS">
-                <label>End Time:</label>
-                <input type="text" name="split_end_time[]" placeholder="HH:MM:SS">
-            `;
-            splitTimesContainer.appendChild(newSplitTimeDiv);
-        }
+        function addSplitBoundary() {
+    		var splitBoundariesContainer = document.getElementById("split_boundaries_container");
+    		var newSplitBoundaryDiv = document.createElement("div");
+    		newSplitBoundaryDiv.innerHTML = `
+        		<input type="text" name="split_boundary" placeholder="HH:MM:SS">
+    		`;
+    		splitBoundariesContainer.appendChild(newSplitBoundaryDiv);
+		}
     </script>
 </head>
 <body>
@@ -81,19 +78,62 @@
 			<input type="text" id="end_time_input" name="end_time" placeholder="HH:MM:SS">
 		</div>
 		<div id="join" class="edit-option" style="display: none;">
-			<label for="join_files_input">Join Files:</label>
-			<input type="file" id="join_files_input" name="join_files" accept=".mp4, .mov" multiple>
+			<label for="num_videos">Number of Videos:</label>
+			<input type="number" id="num_videos" name="num_videos" min="2" required>
+			<div id="video_inputs"></div>
+			<button onclick="submitJoinVideos()">Join Videos</button>
 		</div>
+
+		<script>
+    		// Dynamically generate file input fields based on the number of videos
+    		document.getElementById('num_videos').addEventListener('input', function() {
+        		var numVideos = parseInt(this.value);
+        		var videoInputs = '';
+        		for (var i = 0; i < numVideos; i++) {
+            		videoInputs += '<input type="file" name="videos" accept="video/*" required><br>';
+        		}
+        		document.getElementById('video_inputs').innerHTML = videoInputs;
+    		});
+
+    		// Function to submit the join form
+    		function submitJoinVideos() {
+        		var numVideos = parseInt(document.getElementById('num_videos').value);
+        		var fileInputs = document.querySelectorAll('input[type="file"]');
+        		var formData = new FormData();
+        			// Append the file inputs to the form data
+       			for (var i = 0; i < numVideos; i++) {
+           			var fileInput = fileInputs[i];
+           			var files = fileInput.files;
+           			if (files.length > 0) {
+               			formData.append('videos', files[0]);
+           			}
+       			}
+       			// Send the form data to the /join route using AJAX
+       			var xhr = new XMLHttpRequest();
+       			xhr.open('POST', '/join');
+       			xhr.onload = function() {
+           			if (xhr.status === 200) {
+               			var response = JSON.parse(xhr.responseText);
+               			// Handle the response, e.g., display a download link
+           			} else {
+               			// Handle the error
+           			}
+       			};
+       			xhr.send(formData);
+   			}
+		</script>
+
 		<div id="split" class="edit-option" style="display: none;">
-			<div id="split_times_container">
+			<label for="split_video_input">Video:</label>
+			<input type="file" id="split_video_input" name="split_video" accept=".mp4, .mov">
+			<br>
+			<div id="split_boundaries_container">
 				<div>
-					<label>Start Time:</label>
-					<input type="text" name="split_start_time[]" placeholder="HH:MM:SS">
-					<label>End Time:</label>
-					<input type="text" name="split_end_time[]" placeholder="HH:MM:SS">
+					<label>Boundary Time:</label>
+					<input type="text" name="split_boundary" placeholder="HH:MM:SS">
 				</div>
 			</div>
-			<button type="button" onclick="addSplitTime()">Add Split Time</button>
+			<button type="button" onclick="addSplitBoundary()">Add Boundary</button>
 		</div>
 		<div id="audio_mixing" class="edit-option" style="display: none;">
 			<label for="audio_mixing_input">Video:</label>
