@@ -2,10 +2,8 @@
 
 ### About:
   
-  - 3rd Year Students In National University of Singapore (AY2023-2024)
-    
+  - 3rd Year Students In National University of Singapore (AY 2023-2024)
     + Major: Computer Engineering
-    
     + Minor: Data Analytics
 
 ### Experience
