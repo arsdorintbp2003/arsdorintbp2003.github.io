@@ -11,12 +11,10 @@ alphabet scripts (English, French, etc)
     Users can break a word into hyphens if they need 
   for visualization purposes (e.g., Introduction into "in tro duc tion")
   + Multi-language can be inputted together:
-  <br>
   ![Flower_input.PNG](images%2FFlower_input.PNG)
   ![Flower.PNG](images%2FFlower.PNG)
   ![Flower_2.PNG](images%2FFlower_2.PNG)
   Example: Lyrics of the song "Flower" from Jisoo (BLACKPINK) after conversion.
-  <br/>
 - Poem-style support: The function of tungbay is mostly suitable for East Asian poems in terms of visualization, due to 
 the constant number of characters inside each sentence.
     ![VanMinhThanLichNom.PNG](images%2FVanMinhThanLichNom.PNG)
