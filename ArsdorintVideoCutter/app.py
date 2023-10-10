@@ -5,8 +5,9 @@ import ffmpeg
 from flask import Flask, render_template, request, send_file
 from flask import send_from_directory, current_app
 import subprocess
+import shutil
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # Directory for uploaded files
 UPLOAD_DIRECTORY = 'uploaded_files'
@@ -26,12 +27,12 @@ def home():
 # Video editing route
 @app.route('/edit', methods=['POST'])
 def edit_video():
-    # Get the editing options from the form
+    # Get the editing option from the form
     edit_option = request.form['edit_option']
 
     # Perform video editing operations
     edited_file = 'edited_video.mp4'
-    edited_file_path = os.path.join(UPLOAD_DIRECTORY, edited_file)
+    edited_file_path = os.path.join(OUTPUT_DIRECTORY, edited_file)
 
     if edit_option == 'cut':
         start_time = request.form['start_time']
@@ -39,8 +40,12 @@ def edit_video():
         uploaded_file = request.files['video']
         file_path = os.path.join(UPLOAD_DIRECTORY, uploaded_file.filename)
         uploaded_file.save(file_path)
-        trim_video(file_path, edited_file, start_time, end_time)
+        edited_file_path = OUTPUT_DIRECTORY + '/' + edited_file
+        if os.path.exists(edited_file_path):
+            os.remove(edited_file_path)
+        trim_video(file_path, edited_file_path, start_time, end_time)
         os.remove(file_path)
+        return send_file(edited_file_path, as_attachment=True)
 
     elif edit_option == 'join':
         num_videos = int(request.form['num_videos'])
@@ -54,9 +59,13 @@ def edit_video():
             file.save(file_path)
             video_paths.append(file_path)
 
-        # Join the videos
         joined_file = 'joined_video.mp4'
         joined_file_path = os.path.join(OUTPUT_DIRECTORY, joined_file)
+
+        if os.path.exists(joined_file_path):
+            os.remove(joined_file_path)
+            print(True)
+
         join_videos(video_paths, joined_file_path)
 
         # Remove the individual video files
@@ -73,7 +82,6 @@ def edit_video():
         split_video_files(uploaded_file_path, split_boundaries, edited_file)
         os.remove(uploaded_file_path)
 
-        # Create a ZIP file containing all the split parts
         zip_file_path = os.path.join(OUTPUT_DIRECTORY, 'edited_videos.zip')
         with zipfile.ZipFile(zip_file_path, 'w') as zip_file:
             for filename in os.listdir(OUTPUT_DIRECTORY):
@@ -81,7 +89,6 @@ def edit_video():
                     file_path = os.path.join(OUTPUT_DIRECTORY, filename)
                     zip_file.write(file_path, os.path.basename(file_path))
 
-        # Return the ZIP file for download
         return send_file(zip_file_path, as_attachment=True)
 
     elif edit_option == 'audio_mixing':
@@ -91,11 +98,13 @@ def edit_video():
         audio_path = os.path.join(UPLOAD_DIRECTORY, audio_file.filename)
         uploaded_file.save(video_path)
         audio_file.save(audio_path)
-        mix_audio(video_path, audio_path, edited_file)
+        edited_file = 'edited_video.mp4'
+        edited_file_path = os.path.join(OUTPUT_DIRECTORY, edited_file)
+        mix_audio(video_path, audio_path, OUTPUT_DIRECTORY)
         os.remove(video_path)
         os.remove(audio_path)
 
-    return send_file(edited_file, as_attachment=True)
+        return send_file(edited_file_path, as_attachment=True)
 
 
 # Trim video

@@ -1,0 +1,507 @@
+@charset "UTF-8";
+
+:root {
+    --primary-color: #2d365a;
+    --secondary-color: #f7f9fc;
+    --text-color: #333;
+}
+
+body {
+    background-color: #f5f5f5; /* Near white or light gray background color */
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 48px;
+    text-align: center;
+}
+
+.introduction,
+.instruction {
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin-top: 50px;
+    margin-left: 350px;
+    margin-right: 350px;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 150px;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.logo h6 {
+    font-size: 11px;
+    margin: 0;
+}
+
+#output {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: top;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    font-size: 22.5px;
+}
+
+textarea {
+    width: 800px;
+    height: 200px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-bottom: 10px;
+    padding: 10px 40px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.column {
+    margin: 0px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.box {
+    display: block;
+    width: 45px;
+    height: 45px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-family: "Nom Na Tong", Arial, sans-serif;
+}
+
+.word-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.character-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+.box.empty {
+    background-color: #eee;
+    border: 1px solid black;
+}
+
+header {
+    background-color: #303f9f;
+    color: #fff;
+    padding: 20px;
+    height: 150px;
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 45px;
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: #283593;
+    padding: 5px;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background-color: #303f9f;
+    padding: 5px;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #536dfe;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin: auto;
+}
+
+footer {
+    background-color: #303f9f;
+    color: #fff;
+    padding: 5px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.main {
+    margin: 100px 300px 100px 300px;
+    text-align: center;
+    align-items: center;
+}
+
+.text-name-input {
+    width: 800px;
+    height: 25px;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.output-container {
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.empty {
+    background-color: #ccc;
+}
+
+.text-name {
+    display: flex;
+    align-items: center;
+    width: auto;
+    font-family: "Noto Sans CJK JP", sans-serif;
+    vertical-align: top;
+    writing-mode: vertical-lr;
+    justify-content: center;
+    text-orientation: upright;
+    font-size: 60px;
+    line-height: 1.2;
+    text-align: center;
+    margin: auto;
+}
+
+.text-name div {
+    writing-mode: horizontal-tb;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.dropdown:hover .dropbtn {
+    background-color: var(--primary-color);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: var(--secondary-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.dropdown-content.poem-styles {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-content.poem-styles a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content.poem-styles a:hover {
+    background-color: #e8e8e8;
+}
+
+.dropdown.poem-styles:hover .dropdown-content.poem-styles {
+    display: block;
+}
+
+.dropdown-message {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dropdown-content.options {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-content.options a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content.options a:hover {
+    background-color: #e8e8e8;
+}
+
+.dropdown.options:hover .dropdown-content.options {
+    display: block;
+}
+
+.dropdown-label {
+    color: #333;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.dropdown-content.options .option-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content.options .option-group label {
+    margin-bottom: 5px;
+}
+
+.dropdown-content.options .option-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.column:last-child {
+    margin-right: 0px;
+}
+
+.poem-styles {
+    margin-top: 10px;
+}
+
+.kieu-story .box:nth-child(6n + 1) {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.page {
+    width: 600px;
+    margin-bottom: 50px;
+    direction: rtl;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid #000;
+    margin-top: 50px;
+    padding: 40px;
+    height: 800px;
+}
+
+.page .text-name {
+    direction: ltr;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    border: 1.5px solid #000;
+    padding: 20px;
+}
+
+.small-font {
+    font-size: 13.5px;
+}
+
+/* Video Editor Page Styles */
+
+.video-editor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.video-editor-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.video-editor-input {
+    width: 500px;
+    height: 25px;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.video-editor-button {
+    margin-top: 20px;
+}
+
+.video-preview-container {
+    margin-top: 50px;
+}
+
+.video-preview {
+    width: 600px;
+    height: auto;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.video-preview-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.video-preview-description {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.video-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-actions button {
+    margin-right: 10px;
+}
+
+.video-action-result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+form {
+	text-align: center;
+}
